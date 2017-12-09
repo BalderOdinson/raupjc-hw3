@@ -1,0 +1,20 @@
+﻿@using Todo.WebApplication.Models.TodoViewModels
+@model List<Todo.WebApplication.Models.TodoViewModels.TodoViewModel>
+
+
+<div>
+    @foreach (var todoItem in Model)
+    {
+        <h6 style="margin-top: 20px">
+            <b>@todoItem.Text</b>
+            <span style="color: red">@(todoItem.DateCompleted.HasValue ? null : todoItem.DateDueOffset)</span>
+        </h6>
+        <h6>
+            @(todoItem.DateCompleted?.ToLocalTime().ToLongDateString() ?? todoItem.DateDue?.ToLocalTime().ToLongDateString())
+        </h6>
+        <h6>
+            <a asp-controller="Todo" asp-action="@(todoItem.DateCompleted.HasValue ? "RemoveFromCompleted" : "MarkAsCompleted")" 
+               asp-all-route-data="@(new Dictionary<string,string>{ { "id" , todoItem.Id.ToString() } })">@(todoItem.DateCompleted.HasValue ? "Remove from completed" : "Mark as completed")</a>
+        </h6>
+    }
+</div>

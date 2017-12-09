@@ -1,0 +1,33 @@
+﻿@using Todo.WebApplication.Models.TodoViewModels
+@model Todo.WebApplication.Models.TodoViewModels.AddTodoViewModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Add todo</title>
+</head>
+<body>
+<h2 style="margin-bottom: 20px">
+    <b>Add todo</b>
+</h2>
+<form asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="Text"></label>
+        <input asp-for="Text" class="form-control"/>
+        <span asp-validation-for="Text" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DateDue"></label>
+        @Html.TextBoxFor(m => m.DateDue, "{0:dd/MM/yyyy}", new {@class = "form-control", placeholder="dd/MM/yyyy"})
+        <span asp-validation-for="DateDue" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Labels(Seperate labels with comma)</label>
+        <input asp-for="TodoLabels" class="form-control" />
+        <span asp-validation-for="TodoLabels" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+</body>
+</html>

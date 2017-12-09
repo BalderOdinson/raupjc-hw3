@@ -1,0 +1,26 @@
+﻿@using Todo.WebApplication.Models.TodoViewModels
+@model Todo.WebApplication.Models.TodoViewModels.IndexViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@Model.Title</title>
+</head>
+
+<body>
+    <div>
+        <h2><b>@Model.Title</b></h2>
+        <h5>
+            <a asp-controller="Todo" asp-action="Add">Add new todo</a>
+            <a style="margin-left: 10px" asp-controller="Todo" asp-action="GetCompleted">See completed todos</a>
+        </h5>
+
+        @Html.Partial("TodoPartial", Model.TodoViewModels)
+    </div>
+</body>
+</html>

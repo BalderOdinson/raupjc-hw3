@@ -1,0 +1,22 @@
+﻿@using Todo.WebApplication.Models.TodoViewModels
+@model Todo.WebApplication.Models.TodoViewModels.CompletedViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@Model.Title</title>
+</head>
+
+<body>
+<div>
+    <h2><b>@Model.Title</b></h2>
+
+    @Html.Partial("TodoPartial", Model.TodoViewModels)
+</div>
+</body>
+</html>
